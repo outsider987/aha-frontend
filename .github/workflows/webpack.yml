@@ -34,10 +34,13 @@ jobs:
       run: |
         npm run build
 
+    - name: Echo secrets.COMMIT
+      run: |
+        echo "The value of secrets.COMMIT is ${{secrets.COMMIT}}"
+
     - name: Commit dist to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@3.7.1
       with:
         GITHUB_TOKEN: ${{ secrets.COMMIT }}
         BRANCH: gh-pages
         FOLDER: dist
-  
