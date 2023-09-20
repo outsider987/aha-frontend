@@ -28,7 +28,9 @@
     "sourceMap": true,
     "strictPropertyInitialization": false,
     "noFallthroughCasesInSwitch": true,
-    "incremental": true
+    "incremental": true,
+    "allowImportingTsExtensions": true, 
+    "experimentalDecorators": true,
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
