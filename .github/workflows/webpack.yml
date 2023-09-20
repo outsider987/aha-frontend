@@ -36,7 +36,7 @@ jobs:
 
     - name: Echo secrets.COMMIT
       run: |
-        echo "The value of secrets.COMMIT is ${{secrets.COMMIT}}"
+        echo "The value of secrets.COMMIT is ${{secrets.COMMIT}} "
 
     - name: Commit dist to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@3.7.1
