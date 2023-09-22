@@ -2,13 +2,9 @@ import { useState } from "react";
 import "./App.css";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import { selectAuth } from "./store";
-import { useSelector } from "react-redux";
 import Profile from "./components/Profile";
 
 function App() {
-  const authState = useSelector(selectAuth);
-  const isPassLogin = authState.accessToken ? true : false;
   const [isLoginPage, setIsLogin] = useState(true);
   const onSwitchLogin = () => {
     setIsLogin(!isLoginPage);
