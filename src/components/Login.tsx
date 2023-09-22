@@ -1,0 +1,66 @@
+import Input from "./Input";
+import Button from "./Button";
+import { useState } from "react";
+import useAuthApi from "~/api/auth";
+import { store } from "~/store";
+import { setToken } from "~/store/auth";
+
+export const LoginInitial = {
+  email: "",
+  password: "",
+};
+
+const Login = () => {
+  const [login, setLogin] = useState(LoginInitial);
+  const { POST_LOGIN } = useAuthApi();
+  const onLoginChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setLogin({ ...login, [name]: value });
+  };
+
+  const loginColunm = [
+    {
+      label: "Email",
+      type: "text",
+      placeholder: "Email",
+      name: "email",
+      value: login.email,
+    },
+    {
+      label: "Password",
+      type: "text",
+      placeholder: "Password",
+      name: "password",
+      value: login.password,
+    },
+  ];
+
+  const onClickLogin = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    const res = await POST_LOGIN(login);
+    console.log(res);
+    if (res.data.success && res.data.data.accessToken) {
+      store.dispatch(setToken(res.data.data));
+    }
+  };
+
+  return (
+    <form className="">
+      {loginColunm.map((item, key) => (
+        <Input
+          key={key}
+          label={item.label}
+          type={item.type}
+          placeholder={item.placeholder}
+          value={item.value}
+          name={item.name}
+          onChange={onLoginChange}
+        />
+      ))}
+      <Button onClick={onClickLogin}>Login in</Button>
+    </form>
+  );
+};
+
+export default Login;

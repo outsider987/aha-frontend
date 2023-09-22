@@ -10,10 +10,24 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.9",
+    "@mui/material": "^5.14.10",
+    "@mui/styled-engine-sc": "^5.14.10",
+    "@reduxjs/toolkit": "^1.9.5",
+    "axios": "^1.5.0",
+    "clsx": "^2.0.0",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "jwt-decode": "^3.1.2",
     "path": "^0.12.7",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-query": "^3.39.3",
+    "react-redux": "^8.1.2",
+    "react-router-dom": "^6.16.0",
+    "styled-components": "^6.0.8"
   },
   "homepage": "https://github.com/outsider987/aha-frontend",
   "devDependencies": {

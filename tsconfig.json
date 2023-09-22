@@ -17,9 +17,10 @@
     "downlevelIteration": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
-      "@/*": ["./src/*"]
+      "~/*": ["*"]
+      
     },
     "noUnusedLocals": true,
     "noUnusedParameters": true,
