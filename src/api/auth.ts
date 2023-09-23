@@ -19,10 +19,14 @@ const useAuthApi = () => {
   };
 
   const POST_LOGIN = async (userDate: typeof LoginInitial) => {
+
+
     const resp = await authApi.post<APIResponse>('login', {
       ...userDate,
     },
-    {withCredentials: true});
+    {withCredentials: true, headers: { 'Content-Type': 'application/json' }
+    
+  });
     if (resp.data.data) setTokenStorage(resp.data.data);
 
     return resp;

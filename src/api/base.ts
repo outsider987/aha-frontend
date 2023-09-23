@@ -23,6 +23,7 @@ export const publicApi = (subPath: string = '') => {
     headers: {
       'Content-Type': 'application/json',
     },
+    withCredentials: true,
   });
 
   api.interceptors.request.use(
@@ -36,6 +37,7 @@ export const publicApi = (subPath: string = '') => {
 
   api.interceptors.response.use(
     (response: AxiosResponse<APIResponse, any>) => {
+      debugger
       checkErrorCdoe(response);
       return response;
     },

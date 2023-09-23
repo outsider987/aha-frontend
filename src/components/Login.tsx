@@ -39,7 +39,6 @@ const Login = () => {
     e.preventDefault();
 
     const res = await POST_LOGIN(login);
-    console.log(res);
     if (res.data.success && res.data.data.accessToken) {
       store.dispatch(setToken(res.data.data));
     }

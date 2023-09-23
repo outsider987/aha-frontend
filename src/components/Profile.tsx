@@ -1,15 +1,25 @@
 import PersonIcon from "@mui/icons-material/Person";
+import { useEffect } from "react";
+import { store } from "~/store";
 import { getCookie } from "~/utils/cookie";
 
 const Profile = () => {
-  const accessToken = getCookie("accessToken");
+  const accessToken = getCookie("accessToken") as any;
+  const profile = getCookie("profile") as any;
   const onGoogleLogin = () => {
     window.location.href = `${process.env.API_URL}/auth/google`;
   };
 
+  useEffect(() => {
+    const accessToken = getCookie("accessToken");
+    if (accessToken) {
+      // store.dispatch(setToken(accessToken));
+    }
+  }, []);
+  console.log(tokens);
   return (
-    <div className={`${accessToken ? "" : " rounded-full bg-gray-400"}`}>
-      {accessToken ? (
+    <div className={`${tokens ? "" : " rounded-full bg-gray-400"}`}>
+      {tokens ? (
         <>
           <img
             className="w-full rounded-full bg-gray-400"
