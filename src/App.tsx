@@ -15,21 +15,23 @@ function App() {
       <div className="grid grid-cols-2 font-bold ">
         {isLoginPage ? <Login /> : <Register />}
         <div className="text-orange-400">
-          {isLoginPage ? (
-            <div
-              className="flex justify-center items-center"
-              onClick={onSwitchLogin}
-            >
-              Register
-            </div>
-          ) : (
-            <div
-              className="flex justify-center items-center"
-              onClick={onSwitchLogin}
-            >
-              Login
-            </div>
-          )}
+          <div className=" flex items-end h-ful cursor-pointer">
+            {isLoginPage ? (
+              <div
+                className="flex justify-center items-center"
+                onClick={onSwitchLogin}
+              >
+                Register
+              </div>
+            ) : (
+              <div
+                className="flex justify-center items-center"
+                onClick={onSwitchLogin}
+              >
+                Login
+              </div>
+            )}
+          </div>
         </div>
       </div>
       <div>

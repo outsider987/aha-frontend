@@ -16,25 +16,29 @@ const Profile = () => {
       // store.dispatch(setToken(accessToken));
     }
   }, []);
-  console.log(tokens);
+
   return (
-    <div className={`${tokens ? "" : " rounded-full bg-gray-400"}`}>
-      {tokens ? (
-        <>
+    <div>
+      {accessToken ? (
+        <div className="">
           <img
-            className="w-full rounded-full bg-gray-400"
+            className="w-full rounded-full "
             // src={accessToken.user.image}
           />
           <span className="flex justify-center text-center font-bold text-orange-400">
             {/* {session.data.user.name} */}
           </span>
-        </>
+        </div>
       ) : (
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex  flex-col justify-center items-center">
           <PersonIcon
+            className=" rounded-full bg-gray-400"
             style={{ width: "500px", height: "500px", color: "white" }}
           ></PersonIcon>
-          <div className=" cursor-pointer" onClick={onGoogleLogin}>
+          <div
+            className=" text-orange-400 font-bold cursor-pointer pt-3"
+            onClick={onGoogleLogin}
+          >
             Google Login
           </div>
         </div>
