@@ -41,6 +41,7 @@ const Login = () => {
     const res = await POST_LOGIN(login);
     if (res.data.success && res.data.data.accessToken) {
       store.dispatch(setToken(res.data.data));
+      window.location.reload();
     }
   };
 
