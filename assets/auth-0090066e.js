@@ -1,4 +1,4 @@
-import{j as X,s as ne,a as be,d as We}from"./index-3971e4d9.js";const Ke=e=>X.jsxs("div",{className:"flex flex-col "+e.className,children:[e.label!=null&&X.jsx("span",{className:"flex",children:e.label}),X.jsx("input",{...e,"data-testid":"add-word-input",style:{backgroundColor:e.backgroundColor},className:`w-auto rounded-md border-2
+import{j as X,s as ne,a as be,d as We}from"./index-0af3dc43.js";const Ke=e=>X.jsxs("div",{className:"flex flex-col "+e.className,children:[e.label!=null&&X.jsx("span",{className:"flex",children:e.label}),X.jsx("input",{...e,"data-testid":"add-word-input",style:{backgroundColor:e.backgroundColor},className:`w-auto rounded-md border-2
             border-solid border-opacity-50 bg-black
           px-2 pt-5 pb-4 text-sm
            leading-4  
