@@ -12,7 +12,7 @@ const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename="aha-frontend/">
         <QueryClientProvider client={queryClient}>
           <ModalsWrapper>
             <MYRoutes />
