@@ -37,6 +37,7 @@ const ResetPassword = () => {
           title: "Success",
         })
       );
+      window.location.href = "/";
     }
   };
 
