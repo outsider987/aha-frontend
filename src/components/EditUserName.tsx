@@ -37,11 +37,12 @@ const EditUserName = () => {
         <div>
           <Input value={newName} onChange={(e) => setNewName(e.target.value)} />
           <Button onClick={onChangeUserName}>change</Button>
+          <Button onClick={() => setIsEdit(false)}>cancel</Button>
         </div>
       ) : (
         <div className="flex justify-center space-x-3">
           <span className="flex justify-center text-center font-bold text-orange-400">
-            {userName}
+            userName : {userName}
           </span>
           <div onClick={onEditUserName}>
             <EditIcon />

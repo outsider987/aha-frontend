@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { HashRouter } from "react-router-dom";
+import { HashRouter, BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Provider } from "react-redux";
 import { store } from "./store";
@@ -12,13 +12,13 @@ const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Provider store={store}>
-      <HashRouter>
+      <BrowserRouter>
         <QueryClientProvider client={queryClient}>
           <ModalsWrapper>
             <MYRoutes />
           </ModalsWrapper>
         </QueryClientProvider>
-      </HashRouter>
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>
 );

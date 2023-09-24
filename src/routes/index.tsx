@@ -1,6 +1,6 @@
-import React, { Suspense } from 'react';
-import { useRoutes } from 'react-router-dom';
-import Page404 from '~/pages/Page404';
+import React, { Suspense } from "react";
+import { useRoutes } from "react-router-dom";
+import Page404 from "~/pages/Page404";
 
 const lazyLoad = (Comp: React.LazyExoticComponent<React.ComponentType>) => {
   return (
@@ -10,19 +10,28 @@ const lazyLoad = (Comp: React.LazyExoticComponent<React.ComponentType>) => {
   );
 };
 const HomeRoute = {
-  path: '/',
-  element: lazyLoad(React.lazy(() => import('~/App.tsx'))),
-  icon: 'logo',
-  
- 
+  path: "/",
+  element: lazyLoad(React.lazy(() => import("~/App.tsx"))),
 };
+const ResetPasswordRoute = [
+  {
+    path: "/reset-password",
+    element: lazyLoad(React.lazy(() => import("~/pages/RestPassword"))),
+  },
+  {
+    path: "/reset-password-send-email",
+    element: lazyLoad(React.lazy(() => import("~/pages/ResetPasswordMail"))),
+  },
+];
+
 const routes = [
   HomeRoute,
   {
-    path: '*',
+    path: "*",
     element: <Page404 />,
-    icon: 'logo',
+    icon: "logo",
   },
+  ...ResetPasswordRoute,
 ];
 
 const MYRoutes = () => {

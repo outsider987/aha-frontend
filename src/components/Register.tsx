@@ -17,9 +17,10 @@ const Register = () => {
     setRegister({ ...register, [name]: value });
   };
 
-  const onClickRegister = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const onClickRegister = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    POST_REGISTER({ ...register });
+    const res = await POST_REGISTER({ ...register });
+    if (res.data.success) window.location.reload();
   };
 
   const registerColunm = [

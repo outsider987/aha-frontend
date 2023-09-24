@@ -54,17 +54,6 @@ const useAuthApi = () => {
     return resp;
   };
 
-  // const GET_USER = async () => {
-  //   const resp = await (
-  //     await fetch(`${process.env.API_URL}/auth/login/success`, {
-  //       method: 'get',
-  //       credentials: 'include',
-  //     })
-  //   ).json();
-  //   console.log(resp);
-  //   if (resp.data) setTokenStorage(resp.data);
-  //   return resp;
-  // };
   const GET_USER = async () => {
     const resp = await authApi.get('login/success', {
       withCredentials: true,
@@ -73,7 +62,35 @@ const useAuthApi = () => {
     return resp;
   };
 
-  return { POST_REGISTER, GET_REFRESH, POST_LOGIN, GET_TokenTest, GET_USER, GET_LOGOUT };
+
+  const POST_PASSWORD_EMAIL = async (email: string) => {
+    const resp = await authApi.post('reset-password', {
+      email,
+    });
+
+    return resp;
+  }
+
+  const POST_RESET_PASSWORD = async ({password,confirmPassword}, token: string) => {
+    
+    const resp = await authApi.post(`reset-password/${token}`, {
+      password,
+      confirmPassword
+    }
+    );
+    return resp;
+  }
+
+  return { 
+    POST_REGISTER, 
+    GET_REFRESH, 
+    POST_LOGIN,
+    GET_TokenTest, 
+    GET_USER, 
+    GET_LOGOUT,
+    POST_PASSWORD_EMAIL ,
+    POST_RESET_PASSWORD
+    };
 };
 
 export default useAuthApi;
