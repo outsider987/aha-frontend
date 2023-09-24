@@ -6,6 +6,7 @@ dotenv.config();
 
 dns.setDefaultResultOrder('verbatim')
 export default defineConfig({
+  base: process.env.NODE_ENV === 'production' ? '/aha-frontend/' : '/',
   plugins: [react()],
   server: {
   
