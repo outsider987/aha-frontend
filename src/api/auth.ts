@@ -3,6 +3,7 @@ import { cleanTokenStorage, setTokenStorage } from '~/utils/storage';
 import { APIResponse, privateApi, publicApi } from './base';
 import { RegisterInitial } from '~/components/Register';
 import { LoginInitial } from '~/components/Login';
+import { getCookie } from '~/utils/cookie';
 
 const subPath = 'auth';
 const useAuthApi = () => {
@@ -20,11 +21,13 @@ const useAuthApi = () => {
 
   const POST_LOGIN = async (userDate: typeof LoginInitial) => {
     
-
+    console.log(getCookie('test'))
     const resp = await authApi.post<APIResponse>('login', {
       ...userDate,
     },
-   );
+    {withCredentials: true, 
+    
+  });
     if (resp.data.data) setTokenStorage(resp.data.data);
 
     return resp;
