@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios, { AxiosError, AxiosResponse } from 'axios';
-import { cleanTokenStorage, getTokenStorage, setTokenStorage } from '~/utils/storage';
 import { setAlertDialog } from '../store/global';
 import { store } from '../store';
+import { getCookie } from '~/utils/cookie';
+import { setTokenStorage, cleanTokenStorage } from '~/utils/storage';
 
 export interface APIResponse<T = any> {
 [x: string]: any;
@@ -58,8 +59,9 @@ export const privateApi = (subPath: string = '') => {
 
   api.interceptors.request.use(
     async (config) => {
-      const token = getTokenStorage();
-      if (config.headers) config.headers.authorization = `Bearer ${token.accessToken}`;
+
+      const accessToken = getCookie("accessToken");
+      if (config.headers) config.headers.authorization = `Bearer ${accessToken}`;
       return config;
     },
     (error) => {
@@ -77,17 +79,17 @@ export const privateApi = (subPath: string = '') => {
       if (error.response) {
         // Access Token was expired
         if (error.response.status === 401) {
-          const storedToken = getTokenStorage();
+          const refreshToken = getCookie("refreshToken");
 
           try {
             const rs = await axios.post(
               `${process.env.API_URL}/auth/refresh`,
               {
-                refreshToken: storedToken.refreshToken,
+                refreshToken: refreshToken,
               },
               {
                 headers: {
-                  authorization: `Bearer ${storedToken.refreshToken}`,
+                  authorization: `Bearer ${refreshToken}`,
                 },
               },
             );

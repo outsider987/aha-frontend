@@ -1,0 +1,53 @@
+import { useEffect, useState } from 'react';
+import useUserApi from '~/api/user';
+import * as moment from 'moment-timezone';
+
+const UserDashboard = () => {
+  const [users, setUsers] = useState([]);
+  const { GET_USER_DASHBOARD } = useUserApi();
+
+  useEffect(() => {
+    GET_USER_DASHBOARD().then((res) => {
+      console.log(res.data);
+      setUsers(res.data);
+    });
+  }, []);
+
+  return (
+    <div>
+      <h1>User Dashboard</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>User Name </th>
+            <th>Login Count</th>
+            <th>Sign-Up Timestamp</th>
+            <th>Last Session Timestamp</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user) => (
+            <tr key={user.id} className=" space-x-3">
+              <td>{user.userName}</td>
+              <td>{user.loginInformation.loginCount}</td>
+              <td>
+                {moment(user.loginInformation.createdAt).format(
+                  'YYYY-MM-DD HH:mm:ss'
+                )}
+              </td>
+              <td>
+                {moment(user.loginInformation.updatedAt).format(
+                  'YYYY-MM-DD HH:mm:ss'
+                )}
+
+                {/* {JSON.stringify(user.loginInformation)} */}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+export default UserDashboard;

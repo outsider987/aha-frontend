@@ -1,14 +1,16 @@
-import EditIcon from "@mui/icons-material/Edit";
-import { useUserInformation } from "~/hooks/useUserInformation";
-import useUserApi from "~/api/user";
-import Input from "./Input";
-import { useEffect, useState } from "react";
-import Button from "./Button";
-import LogoutIcon from "@mui/icons-material/Logout";
-import Cookies from "js-cookie";
+import EditIcon from '@mui/icons-material/Edit';
+import { useUserInformation } from '~/hooks/useUserInformation';
+import useUserApi from '~/api/user';
+import Input from './Input';
+import { useEffect, useState } from 'react';
+import Button from './Button';
+import LogoutIcon from '@mui/icons-material/Logout';
+import Cookies from 'js-cookie';
+import UserDashboard from './UserDashboard';
+import UserStatistics from './UserStatistics';
 
 const EditUserName = () => {
-  const { userName } = useUserInformation();
+  const { userName, email } = useUserInformation();
   const [newName, setNewName] = useState<string>(userName);
   const [isEdit, setIsEdit] = useState<boolean>(false);
   const { POST_USER_CHANGE_NAME } = useUserApi();
@@ -23,8 +25,8 @@ const EditUserName = () => {
   };
 
   const onLogout = () => {
-    localStorage.removeItem("accessToken");
-    Cookies.remove("accessToken");
+    localStorage.removeItem('accessToken');
+    Cookies.remove('accessToken');
     window.location.reload();
   };
 
@@ -44,7 +46,7 @@ const EditUserName = () => {
           <span className="flex justify-center text-center font-bold text-orange-400">
             userName : {userName}
           </span>
-          <div onClick={onEditUserName}>
+          <div className=" cursor-pointer" onClick={onEditUserName}>
             <EditIcon />
           </div>
           <div
@@ -56,6 +58,9 @@ const EditUserName = () => {
           </div>
         </div>
       )}
+      <div>email: {email}</div>
+      <UserDashboard />
+      <UserStatistics />
     </div>
   );
 };

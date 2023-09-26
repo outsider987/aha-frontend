@@ -14,9 +14,18 @@ const useUserApi = () => {
     return resp;
   }
 
- 
+  const GET_USER_DASHBOARD = async () => {
+    const resp = await privateAuthApi.get<APIResponse>('dashboard');
+    return resp;
+  }
 
-  return { POST_USER_CHANGE_NAME };
+  const GET_STATISTICS = async () => {
+    debugger
+    const resp = await privateAuthApi.get<APIResponse>('statistics');
+    return resp;
+  }
+
+  return { POST_USER_CHANGE_NAME ,GET_USER_DASHBOARD,GET_STATISTICS};
 };
 
 export default useUserApi;

@@ -6,6 +6,7 @@ import { getCookie } from "~/utils/cookie";
 export const useUserInformation = () => {
   const [userName, setUserName] = useState<string>("");
   const [accessToken, setAccessToken] = useState("");
+  const [email, setEmail] = useState<string>("");
 
   useEffect(() => {
     const accessToken = getCookie("accessToken");
@@ -14,7 +15,8 @@ export const useUserInformation = () => {
 
       setUserName(jwtUser.userName);
       setAccessToken(accessToken);
+      setEmail(jwtUser.email);
     }
   }, []);
-  return { userName, accessToken };
+  return { userName, accessToken ,email};
 };
