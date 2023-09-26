@@ -18,12 +18,12 @@ const UserStatistics = () => {
       <h1>User Statistics </h1>
       <table>
         <thead>
-          <tr>
-            <th>Number of users </th>
-            <th>Number of users with active sessions today.</th>
-            <th>
-              Average number of active session users in the last 7 days rolling.
+          <tr className="space-x-3">
+            <th className="px-3">Number of users </th>
+            <th className="px-3">
+              Number of users with active sessions today.
             </th>
+            <th className="px-3">users count last 7 days rolling.</th>
           </tr>
         </thead>
         <tbody>

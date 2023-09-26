@@ -19,10 +19,10 @@ const UserDashboard = () => {
       <table>
         <thead>
           <tr>
-            <th>User Name </th>
-            <th>Login Count</th>
-            <th>Sign-Up Timestamp</th>
-            <th>Last Session Timestamp</th>
+            <th className="px-3">User Name </th>
+            <th className="px-3">Login Count</th>
+            <th className="px-3">Sign-Up Timestamp</th>
+            <th className="px-3">Last Session Timestamp</th>
           </tr>
         </thead>
         <tbody>
