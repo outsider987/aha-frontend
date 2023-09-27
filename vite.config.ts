@@ -13,7 +13,12 @@ export default defineConfig({
     https: process.env.NODE_ENV === 'production' ,
     cors: true,
     open: true,
-    
+    proxy: {
+      '/api': {
+      target: process.env.API_URL,
+      changeOrigin: true,
+      }
+    }
     
   },
  
