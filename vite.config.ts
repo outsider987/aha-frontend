@@ -9,7 +9,7 @@ export default defineConfig({
   // base: process.env.NODE_ENV === 'production' ? '/aha-frontend/' : '/',
   plugins: [react()],
   server: {
-  
+    origin:process.env.API_URL,
     https: process.env.NODE_ENV === 'production' ,
     cors: true,
     open: true,
@@ -17,6 +17,7 @@ export default defineConfig({
       '/api': {
       target: process.env.API_URL,
       changeOrigin: true,
+      rewrite: path => path.replace(/^\/api/, '')
       }
     }
     
