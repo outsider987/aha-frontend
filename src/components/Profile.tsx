@@ -1,6 +1,6 @@
-import PersonIcon from "@mui/icons-material/Person";
-import { useUserInformation } from "~/hooks/useUserInformation";
-import EditUserName from "./EditUserName";
+import PersonIcon from '@mui/icons-material/Person';
+import { useUserInformation } from '~/hooks/useUserInformation';
+import EditUserName from './EditUserName';
 
 const Profile = () => {
   const { accessToken } = useUserInformation();
@@ -23,7 +23,7 @@ const Profile = () => {
         <div className="flex  flex-col justify-center items-center">
           <PersonIcon
             className=" rounded-full bg-gray-400"
-            style={{ width: "500px", height: "500px", color: "white" }}
+            style={{ width: '500px', height: '500px', color: 'white' }}
           ></PersonIcon>
           <div
             className=" text-orange-400 font-bold cursor-pointer pt-3"

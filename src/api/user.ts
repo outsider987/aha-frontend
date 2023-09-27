@@ -20,7 +20,6 @@ const useUserApi = () => {
   }
 
   const GET_STATISTICS = async () => {
-    debugger
     const resp = await privateAuthApi.get<APIResponse>('statistics');
     return resp;
   }

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import useUserApi from '~/api/user';
-import * as moment from 'moment-timezone';
 
 const UserStatistics = () => {
   const [statistics, setStatistics] = useState({});
