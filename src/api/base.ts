@@ -20,11 +20,7 @@ export interface APIEorrorResponse<T = any> {
 export const publicApi = (subPath: string = '') => {
   const url = `${process.env.API_URL}/${subPath}`;
   const api = axios.create({
-    baseURL: url,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    withCredentials: true,
+    baseURL: url
   });
 
   api.interceptors.request.use(
