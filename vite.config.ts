@@ -15,10 +15,11 @@ export default defineConfig({
     //   origin: process.env.API_URL,
     //   credentials: true,
     // },
-    // open: true,
+    open: true,
+    cors: true,
     proxy: {
       '/api': {
-        target: process.env.API_URL,
+        target: 'https://aha-frontend-lemon.vercel.app',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       }
