@@ -29,7 +29,7 @@ const useAuthApi = () => {
       {
         withCredentials: true,
         headers: {
-          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Origin': 'API_URL=https://aha-backend.fly.dev',
           'Access-Control-Allow-Credentials': true
         }
       }
