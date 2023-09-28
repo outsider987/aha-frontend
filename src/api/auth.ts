@@ -27,11 +27,11 @@ const useAuthApi = () => {
         ...userDate
       },
       {
-        withCredentials: true,
-        headers: {
-          'Access-Control-Allow-Origin': 'API_URL=https://aha-backend.fly.dev',
-          'Access-Control-Allow-Credentials': true
-        }
+        withCredentials: true
+        // headers: {
+        //   'Access-Control-Allow-Origin': 'API_URL=https://aha-backend.fly.dev',
+        //   'Access-Control-Allow-Credentials': true
+        // }
       }
     );
     if (resp.data.data) setTokenStorage(resp.data.data);
