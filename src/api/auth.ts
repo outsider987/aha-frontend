@@ -35,8 +35,9 @@ const useAuthApi = () => {
       }
     );
     console.log(resp.headers['set-cookie']);
-    console.log(resp.headers['set-cookie'][0].split(';')[0].split('=')[1]);
+
     console.log(document.cookie);
+    debugger;
     if (resp.data.data) setTokenStorage(resp.data.data);
 
     return resp;
