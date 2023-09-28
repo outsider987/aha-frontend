@@ -8,7 +8,7 @@ export default defineConfig({
 
   plugins: [react()],
   server: {
-    host: 'https://aha-frontend-lemon.vercel.app',
+    // host: 'https://aha-frontend-lemon.vercel.app',
     // origin:process.env.API_URL,
     // https: process.env.NODE_ENV === 'production' ,
     // cors: {
