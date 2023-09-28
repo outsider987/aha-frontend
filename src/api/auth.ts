@@ -21,40 +21,40 @@ const useAuthApi = () => {
 
   const POST_LOGIN = async (userDate: typeof LoginInitial) => {
     console.log(getCookie('test'));
-    // const resp = await authApi.post<APIResponse>(
-    //   'login',
-    //   {
-    //     ...userDate
-    //   },
-    //   {
-    //     withCredentials: true,
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     }
-    //   }
-    // );
-    // if (resp.data.data) setTokenStorage(resp.data.data);
-
-    // return resp;
-    const res = await fetch('https://aha-backend.fly.dev/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json' // Specify the content type of the request body
+    const resp = await authApi.post<APIResponse>(
+      'login',
+      {
+        ...userDate
       },
-      body: JSON.stringify(userDate),
-      credentials: 'include' // Include cookies
-    });
+      {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }
+    );
+    if (resp.data.data) setTokenStorage(resp.data.data);
 
-    if (res.ok) {
-      // The response status is in the range 200-299, indicating success
-      const data = await res.json(); // Assuming the response is in JSON format
-      // Now you can work with the data returned by the server
-      return data;
-    } else {
-      // Handle the case where the request was not successful
-      console.error('Request failed with status:', res.status);
-    }
-    console.log(res);
+    return resp;
+    // const res = await fetch('https://aha-backend.fly.dev/auth/login', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json' // Specify the content type of the request body
+    //   },
+    //   body: JSON.stringify(userDate),
+    //   credentials: 'include' // Include cookies
+    // });
+
+    // if (res.ok) {
+    //   // The response status is in the range 200-299, indicating success
+    //   const data = await res.json(); // Assuming the response is in JSON format
+    //   // Now you can work with the data returned by the server
+    //   return data;
+    // } else {
+    //   // Handle the case where the request was not successful
+    //   console.error('Request failed with status:', res.status);
+    // }
+    // console.log(res);
   };
 
   const GET_REFRESH = async () => {
