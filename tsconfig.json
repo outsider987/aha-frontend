@@ -35,5 +35,5 @@
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }],
-  // "exclude": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.js", "src/**/*.jsx"]
+  "exclude": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.js", "src/**/*.jsx"]
 }
