@@ -34,7 +34,7 @@ const useAuthApi = () => {
         // }
       }
     );
-    console.groupCollapsed(document.cookie);
+    console.log(document.cookie);
     if (resp.data.data) setTokenStorage(resp.data.data);
 
     return resp;
