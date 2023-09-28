@@ -6,7 +6,7 @@ import { getCookie } from '~/utils/cookie';
 import { setTokenStorage, cleanTokenStorage } from '~/utils/storage';
 
 export interface APIResponse<T = any> {
-[x: string]: any;
+  [x: string]: any;
   data?: T;
   message?: string;
   success?: boolean;
@@ -20,7 +20,12 @@ export interface APIEorrorResponse<T = any> {
 export const publicApi = (subPath: string = '') => {
   const url = `${process.env.API_URL}/${subPath}`;
   const api = axios.create({
-    baseURL: url
+    baseURL: url,
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      'Access-Control-Allow-Origin': process.env.API_URL
+    }
   });
 
   api.interceptors.request.use(
@@ -29,7 +34,7 @@ export const publicApi = (subPath: string = '') => {
     },
     (error) => {
       return Promise.reject(error);
-    },
+    }
   );
 
   api.interceptors.response.use(
@@ -40,7 +45,7 @@ export const publicApi = (subPath: string = '') => {
     (error) => {
       checkErrorCdoe(error.response);
       return error.response;
-    },
+    }
   );
 
   return api;
@@ -50,19 +55,19 @@ export const privateApi = (subPath: string = '') => {
   const api = axios.create({
     baseURL: `${process.env.API_URL}/${subPath}`,
     headers: { 'Content-Type': 'application/json' },
-    withCredentials: true,
+    withCredentials: true
   });
 
   api.interceptors.request.use(
     async (config) => {
-
-      const accessToken = getCookie("accessToken");
-      if (config.headers) config.headers.authorization = `Bearer ${accessToken}`;
+      const accessToken = getCookie('accessToken');
+      if (config.headers)
+        config.headers.authorization = `Bearer ${accessToken}`;
       return config;
     },
     (error) => {
       return Promise.reject(error);
-    },
+    }
   );
 
   api.interceptors.response.use(
@@ -75,19 +80,19 @@ export const privateApi = (subPath: string = '') => {
       if (error.response) {
         // Access Token was expired
         if (error.response.status === 401) {
-          const refreshToken = getCookie("refreshToken");
+          const refreshToken = getCookie('refreshToken');
 
           try {
             const rs = await axios.post(
               `${process.env.API_URL}/auth/refresh`,
               {
-                refreshToken: refreshToken,
+                refreshToken: refreshToken
               },
               {
                 headers: {
-                  authorization: `Bearer ${refreshToken}`,
-                },
-              },
+                  authorization: `Bearer ${refreshToken}`
+                }
+              }
             );
             checkErrorCdoe(rs);
             setTokenStorage(rs.data.data);
@@ -105,16 +110,25 @@ export const privateApi = (subPath: string = '') => {
         }
       }
       return Promise.reject(error);
-    },
+    }
   );
 
   return api;
 };
 
-async function checkErrorCdoe(response: AxiosResponse<APIResponse, any>, catchError: any = 'good') {
+async function checkErrorCdoe(
+  response: AxiosResponse<APIResponse, any>,
+  catchError: any = 'good'
+) {
   switch (response.data.success) {
     case false:
-      store.dispatch(setAlertDialog({ show: true, msg: JSON.stringify(response.data), title: 'Error' }));
+      store.dispatch(
+        setAlertDialog({
+          show: true,
+          msg: JSON.stringify(response.data),
+          title: 'Error'
+        })
+      );
       break;
 
     case true:
