@@ -1,15 +1,15 @@
-# fly.toml app configuration file generated for aha-frontend on 2023-09-27T01:10:21+08:00
+# fly.toml app configuration file generated for aha-frontedn on 2023-09-29T08:04:48+08:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "aha-frontend"
+app = "aha-frontedn"
 primary_region = "hkg"
 
 [build]
 
 [http_service]
-  internal_port = 3000
+  internal_port = 8080
   force_https = true
   auto_stop_machines = true
   auto_start_machines = true

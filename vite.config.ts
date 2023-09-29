@@ -5,7 +5,7 @@ dotenv.config();
 
 export default defineConfig({
   // base: process.env.NODE_ENV === 'production' ? '/aha-frontend/' : '/',
-
+  // base: './',
   plugins: [react()],
   server: {
     // host: 'https://aha-frontend-lemon.vercel.app',
@@ -15,8 +15,9 @@ export default defineConfig({
     //   origin: process.env.API_URL,
     //   credentials: true,
     // },
+    port: 8080,
     open: true,
-    cors: true,
+    // cors: true,
     proxy: {
       '/api': {
         target: 'https://aha-frontend-lemon.vercel.app',
