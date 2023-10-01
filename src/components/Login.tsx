@@ -1,13 +1,13 @@
-import Input from "./Input";
-import Button from "./Button";
-import { useState } from "react";
-import useAuthApi from "~/api/auth";
-import { store } from "~/store";
-import { setToken } from "~/store/auth";
+import Input from './Input';
+import Button from './Button';
+import { useState } from 'react';
+import useAuthApi from '~/api/auth';
+import { store } from '~/store';
+import { setToken } from '~/store/auth';
 
 export const LoginInitial = {
-  email: "",
-  password: "",
+  email: '',
+  password: ''
 };
 
 const Login = () => {
@@ -20,19 +20,19 @@ const Login = () => {
 
   const loginColunm = [
     {
-      label: "Email",
-      type: "text",
-      placeholder: "Email",
-      name: "email",
-      value: login.email,
+      label: 'Email',
+      type: 'text',
+      placeholder: 'Email',
+      name: 'email',
+      value: login.email
     },
     {
-      label: "Password",
-      type: "text",
-      placeholder: "Password",
-      name: "password",
-      value: login.password,
-    },
+      label: 'Password',
+      type: 'text',
+      placeholder: 'Password',
+      name: 'password',
+      value: login.password
+    }
   ];
 
   const onClickLogin = async (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -49,7 +49,7 @@ const Login = () => {
     <form className="">
       {loginColunm.map((item, key) => (
         <Input
-          key={key}
+          key={item.name}
           label={item.label}
           type={item.type}
           placeholder={item.placeholder}
