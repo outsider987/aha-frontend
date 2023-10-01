@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import useAuthApi from '~/api/auth';
 import Button from '~/components/Button';
 import Input from '~/components/Input';
@@ -8,6 +8,7 @@ import { setAlertDialog } from '~/store/global';
 
 const ResetPassword = () => {
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
   const [confirmPassword, setConfirmPassword] = useState('');
   const [oldPassword, setOldPassword] = useState('');
   const location = useLocation();
@@ -41,7 +42,7 @@ const ResetPassword = () => {
           title: 'Success'
         })
       );
-      window.location.href = '/';
+      navigate('/');
     }
   };
 

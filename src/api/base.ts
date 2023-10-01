@@ -5,6 +5,7 @@ import { store } from '../store';
 import { getCookie } from '~/utils/cookie';
 import { setTokenStorage, cleanTokenStorage } from '~/utils/storage';
 import { getTokenStorage } from '../utils/storage';
+import { useNavigate } from 'react-router-dom';
 
 export interface APIResponse<T = any> {
   [x: string]: any;
@@ -83,6 +84,7 @@ export const privateApi = (subPath: string = '') => {
         if (error.response.status === 401) {
           // const refreshToken = getCookie('refreshToken');
           const { refreshToken } = getTokenStorage();
+          const navigate = useNavigate();
 
           try {
             const rs = await axios.post(
@@ -107,6 +109,7 @@ export const privateApi = (subPath: string = '') => {
 
             if (_error.response.status === 401) {
               cleanTokenStorage();
+              window.location.reload();
             }
             checkErrorCdoe(_error.response, _error.response.status);
 
