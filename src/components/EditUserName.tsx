@@ -8,6 +8,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import Cookies from 'js-cookie';
 import UserDashboard from './UserDashboard';
 import UserStatistics from './UserStatistics';
+import { setTokenStorage } from '../utils/storage';
 
 const EditUserName = () => {
   const { userName, email } = useUserInformation();
@@ -20,12 +21,15 @@ const EditUserName = () => {
   };
   const onChangeUserName = async () => {
     const res = await POST_USER_CHANGE_NAME(newName);
-    if (res.data.success) setIsEdit(false);
+    if (res.data.success) {
+      setTokenStorage(res.data.data);
+      setIsEdit(false);
+    }
     window.location.reload();
   };
 
   const onLogout = () => {
-    localStorage.removeItem('accessToken');
+    localStorage.removeItem('tokens');
     Cookies.remove('accessToken');
     window.location.reload();
   };

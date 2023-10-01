@@ -15,7 +15,7 @@ export default defineConfig({
     //   origin: process.env.API_URL,
     //   credentials: true,
     // },
-    port: 8080,
+    // port: 8080,
     open: true,
     // cors: true,
     proxy: {
@@ -33,6 +33,6 @@ export default defineConfig({
     }
   },
   define: {
-    'process.env': { ...process.env, API_URL: 'https://aha-backend.fly.dev' }
+    'process.env': { ...process.env }
   }
 });

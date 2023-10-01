@@ -97,12 +97,14 @@ export const privateApi = (subPath: string = '') => {
               }
             );
             checkErrorCdoe(rs);
+
             if (rs.data.success) cleanTokenStorage();
             setTokenStorage(rs.data.data);
 
             return api(error.config);
           } catch (_error: any) {
             console.log(_error);
+
             if (_error.response.status === 401) {
               cleanTokenStorage();
             }
