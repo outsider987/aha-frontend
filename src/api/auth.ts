@@ -28,38 +28,12 @@ const useAuthApi = () => {
       },
       {
         withCredentials: true
-        // headers: {
-        //   'Access-Control-Allow-Origin': 'API_URL=https://aha-backend.fly.dev',
-        //   'Access-Control-Allow-Credentials': true
-        // }
       }
     );
-    console.log(resp.headers['set-cookie']);
-
-    console.log(document.cookie);
 
     if (resp.data.data) setTokenStorage(resp.data.data);
 
     return resp;
-    // const res = await fetch('https://aha-backend.fly.dev/auth/login', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json' // Specify the content type of the request body
-    //   },
-    //   body: JSON.stringify(userDate),
-    //   credentials: 'include' // Include cookies
-    // });
-
-    // if (res.ok) {
-    //   // The response status is in the range 200-299, indicating success
-    //   const data = await res.json(); // Assuming the response is in JSON format
-    //   // Now you can work with the data returned by the server
-    //   return data;
-    // } else {
-    //   // Handle the case where the request was not successful
-    //   console.error('Request failed with status:', res.status);
-    // }
-    // console.log(res);
   };
 
   const GET_REFRESH = async () => {
@@ -103,12 +77,13 @@ const useAuthApi = () => {
   };
 
   const POST_RESET_PASSWORD = async (
-    { password, confirmPassword },
+    { password, confirmPassword, oldPassword },
     token: string
   ) => {
     const resp = await authApi.post(`reset-password/${token}`, {
       password,
-      confirmPassword
+      confirmPassword,
+      oldPassword
     });
     return resp;
   };

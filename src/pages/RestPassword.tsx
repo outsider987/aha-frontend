@@ -29,7 +29,10 @@ const ResetPassword = () => {
       );
       return;
     }
-    const res = await POST_RESET_PASSWORD({ password, confirmPassword }, token);
+    const res = await POST_RESET_PASSWORD(
+      { password, confirmPassword, oldPassword },
+      token
+    );
     if (res.data.success) {
       store.dispatch(
         setAlertDialog({
@@ -53,6 +56,14 @@ const ResetPassword = () => {
     <div className="flex justify-center items-center space-y-2 flex-col m-auto w-screen">
       <h1>Reset Password</h1>
       <Input
+        label="Old Password"
+        type="password"
+        placeholder="Old Password"
+        value={oldPassword}
+        name="oldPassword"
+        onChange={(e) => setOldPassword(e.target.value)}
+      ></Input>
+      <Input
         label="Password"
         type="password"
         placeholder="Password"
@@ -67,14 +78,6 @@ const ResetPassword = () => {
         value={confirmPassword}
         name="confirmPassword"
         onChange={(e) => setConfirmPassword(e.target.value)}
-      ></Input>
-      <Input
-        label="Old Password"
-        type="password"
-        placeholder="Old Password"
-        value={oldPassword}
-        name="oldPassword"
-        onChange={(e) => setOldPassword(e.target.value)}
       ></Input>
 
       <Button onClick={onClickResetPassword}>submit</Button>
