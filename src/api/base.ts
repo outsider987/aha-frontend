@@ -61,7 +61,7 @@ export const privateApi = (subPath: string = '') => {
 
   api.interceptors.request.use(
     async (config) => {
-      const accessToken = getCookie('accessToken');
+      const { accessToken } = getTokenStorage();
       if (config.headers)
         config.headers.authorization = `Bearer ${accessToken}`;
       return config;
@@ -97,6 +97,7 @@ export const privateApi = (subPath: string = '') => {
               }
             );
             checkErrorCdoe(rs);
+            if (rs.data.success) cleanTokenStorage();
             setTokenStorage(rs.data.data);
 
             return api(error.config);
