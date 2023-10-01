@@ -1,18 +1,19 @@
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-import useAuthApi from "~/api/auth";
-import Button from "~/components/Button";
-import Input from "~/components/Input";
-import { store } from "~/store";
-import { setAlertDialog } from "~/store/global";
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import useAuthApi from '~/api/auth';
+import Button from '~/components/Button';
+import Input from '~/components/Input';
+import { store } from '~/store';
+import { setAlertDialog } from '~/store/global';
 
 const ResetPassword = () => {
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [oldPassword, setOldPassword] = useState('');
   const location = useLocation();
   const { POST_RESET_PASSWORD } = useAuthApi();
   const searchParams = new URLSearchParams(location.search);
-  const token = searchParams.get("token");
+  const token = searchParams.get('token');
 
   const onClickResetPassword = async (
     e: React.MouseEvent<HTMLButtonElement>
@@ -22,8 +23,8 @@ const ResetPassword = () => {
       store.dispatch(
         setAlertDialog({
           show: true,
-          msg: "password and confirm password not match",
-          title: "Error",
+          msg: 'password and confirm password not match',
+          title: 'Error'
         })
       );
       return;
@@ -33,18 +34,18 @@ const ResetPassword = () => {
       store.dispatch(
         setAlertDialog({
           show: true,
-          msg: "reset password success",
-          title: "Success",
+          msg: 'reset password success',
+          title: 'Success'
         })
       );
-      window.location.href = "/";
+      window.location.href = '/';
     }
   };
 
   useEffect(() => {
     if (!token)
       store.dispatch(
-        setAlertDialog({ show: true, msg: "pls msg to server", title: "Error" })
+        setAlertDialog({ show: true, msg: 'pls msg to server', title: 'Error' })
       );
   }, []);
 
@@ -66,6 +67,14 @@ const ResetPassword = () => {
         value={confirmPassword}
         name="confirmPassword"
         onChange={(e) => setConfirmPassword(e.target.value)}
+      ></Input>
+      <Input
+        label="Old Password"
+        type="password"
+        placeholder="Old Password"
+        value={oldPassword}
+        name="oldPassword"
+        onChange={(e) => setOldPassword(e.target.value)}
       ></Input>
 
       <Button onClick={onClickResetPassword}>submit</Button>
