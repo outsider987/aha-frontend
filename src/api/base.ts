@@ -4,6 +4,7 @@ import { setAlertDialog } from '../store/global';
 import { store } from '../store';
 import { getCookie } from '~/utils/cookie';
 import { setTokenStorage, cleanTokenStorage } from '~/utils/storage';
+import { getTokenStorage } from '../utils/storage';
 
 export interface APIResponse<T = any> {
   [x: string]: any;
@@ -80,7 +81,8 @@ export const privateApi = (subPath: string = '') => {
       if (error.response) {
         // Access Token was expired
         if (error.response.status === 401) {
-          const refreshToken = getCookie('refreshToken');
+          // const refreshToken = getCookie('refreshToken');
+          const { refreshToken } = getTokenStorage();
 
           try {
             const rs = await axios.post(

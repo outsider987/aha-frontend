@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export default defineConfig({
-  // base: process.env.NODE_ENV === 'production' ? '/aha-frontend/' : '/',
+  base: process.env.NODE_ENV === 'production' ? '/aha-frontend/' : '/',
   // base: './',
   plugins: [react()],
   server: {
@@ -33,6 +33,6 @@ export default defineConfig({
     }
   },
   define: {
-    'process.env': { ...process.env }
+    'process.env': { ...process.env, API_URL: 'https://aha-backend.fly.dev' }
   }
 });

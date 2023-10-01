@@ -2,6 +2,7 @@
 import jwtDecode from 'jwt-decode';
 import { useEffect, useState } from 'react';
 import { getCookie } from '~/utils/cookie';
+import { getTokenStorage } from '../utils/storage';
 
 export const useUserInformation = () => {
   const [userName, setUserName] = useState<string>('');
@@ -9,7 +10,8 @@ export const useUserInformation = () => {
   const [email, setEmail] = useState<string>('');
 
   useEffect(() => {
-    const accessToken = getCookie('accessToken');
+    // const accessToken = getCookie('accessToken');
+    const { accessToken } = getTokenStorage();
     if (accessToken) {
       const jwtUser = jwtDecode(accessToken) as any;
 

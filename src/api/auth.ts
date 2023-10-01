@@ -37,7 +37,7 @@ const useAuthApi = () => {
     console.log(resp.headers['set-cookie']);
 
     console.log(document.cookie);
-    debugger;
+
     if (resp.data.data) setTokenStorage(resp.data.data);
 
     return resp;
