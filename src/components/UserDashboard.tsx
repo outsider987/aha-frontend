@@ -9,7 +9,7 @@ const UserDashboard = () => {
   useEffect(() => {
     GET_USER_DASHBOARD().then((res) => {
       console.log(res.data);
-      setUsers(res.data);
+      setUsers(res.data.data);
     });
   }, []);
 

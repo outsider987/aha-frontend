@@ -12,7 +12,7 @@ const UserStatistics = () => {
   useEffect(() => {
     GET_STATISTICS().then((res) => {
       console.log(res.data);
-      setStatistics(res.data);
+      setStatistics(res.data.data);
     });
   }, []);
 

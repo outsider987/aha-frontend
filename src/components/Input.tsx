@@ -10,7 +10,7 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 const Input: React.FC<Props> = (props: Props) => {
   return (
-    <div key={props.key} className={`flex flex-col ` + props.className}>
+    <div className={`flex flex-col ` + props.className}>
       {props.label != undefined && <span className="flex">{props.label}</span>}
       <input
         {...props}

@@ -5,7 +5,7 @@ import { store } from '../store';
 // import { getCookie } from '~/utils/cookie';
 import { setTokenStorage, cleanTokenStorage } from '~/utils/storage';
 import { getTokenStorage } from '../utils/storage';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 export interface APIResponse<T = any> {
   [x: string]: any;
@@ -111,7 +111,7 @@ export const privateApi = (subPath: string = '') => {
               cleanTokenStorage();
               window.location.reload();
             }
-            checkErrorCdoe(_error.response, _error.response.status);
+            checkErrorCdoe(_error.response);
 
             return Promise.reject(_error);
           }
