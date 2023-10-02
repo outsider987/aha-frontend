@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import useUserApi from '~/api/user';
-import * as moment from 'moment-timezone';
+import moment from 'moment';
 
 const UserDashboard = () => {
   const [users, setUsers] = useState([]);
