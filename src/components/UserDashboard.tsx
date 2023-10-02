@@ -8,8 +8,8 @@ const UserDashboard = () => {
 
   useEffect(() => {
     GET_USER_DASHBOARD().then((res) => {
-      console.log(res.data);
-      setUsers(res.data.data.data);
+      console.log(res.data.data);
+      setUsers([...res.data.data]);
     });
   }, []);
 
@@ -27,7 +27,7 @@ const UserDashboard = () => {
         </thead>
         <tbody>
           {users.map((user) => (
-            <tr key={user.id} className=" space-x-3">
+            <tr key={user.id} className="space-x-3">
               <td>{user.userName}</td>
               <td>{user.loginInformation.loginCount}</td>
               <td>
@@ -39,8 +39,6 @@ const UserDashboard = () => {
                 {moment(user.loginInformation.updatedAt).format(
                   'YYYY-MM-DD HH:mm:ss'
                 )}
-
-                {/* {JSON.stringify(user.loginInformation)} */}
               </td>
             </tr>
           ))}
