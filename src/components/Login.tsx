@@ -47,7 +47,7 @@ const Login = () => {
 
   return (
     <form className="">
-      {loginColunm.map((item, key) => (
+      {loginColunm.map((item) => (
         <Input
           key={item.name}
           label={item.label}

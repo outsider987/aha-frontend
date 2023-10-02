@@ -2,7 +2,7 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import { setAlertDialog } from '../store/global';
 import { store } from '../store';
-import { getCookie } from '~/utils/cookie';
+// import { getCookie } from '~/utils/cookie';
 import { setTokenStorage, cleanTokenStorage } from '~/utils/storage';
 import { getTokenStorage } from '../utils/storage';
 import { useNavigate } from 'react-router-dom';
@@ -84,7 +84,7 @@ export const privateApi = (subPath: string = '') => {
         if (error.response.status === 401) {
           // const refreshToken = getCookie('refreshToken');
           const { refreshToken } = getTokenStorage();
-          const navigate = useNavigate();
+          // const navigate = useNavigate();
 
           try {
             const rs = await axios.post(
@@ -125,8 +125,8 @@ export const privateApi = (subPath: string = '') => {
 };
 
 async function checkErrorCdoe(
-  response: AxiosResponse<APIResponse, any>,
-  catchError: any = 'good'
+  response: AxiosResponse<APIResponse, any>
+  // catchError: any = 'good'
 ) {
   switch (response.data.success) {
     case false:

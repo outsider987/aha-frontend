@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import jwtDecode from 'jwt-decode';
 import { useEffect, useState } from 'react';
-import { getCookie } from '~/utils/cookie';
 import { getTokenStorage } from '../utils/storage';
 
 export const useUserInformation = () => {

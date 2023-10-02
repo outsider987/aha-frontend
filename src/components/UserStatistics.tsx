@@ -2,7 +2,11 @@ import { useEffect, useState } from 'react';
 import useUserApi from '~/api/user';
 
 const UserStatistics = () => {
-  const [statistics, setStatistics] = useState({});
+  const [statistics, setStatistics] = useState({
+    usersSignedUp: '',
+    usersTodayActive: '',
+    usersThisWeekActive: ''
+  });
   const { GET_STATISTICS } = useUserApi();
 
   useEffect(() => {
